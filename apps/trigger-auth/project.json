@@ -15,7 +15,8 @@
         "development": {
           "args": ["node-env=development"]
         }
-      }
+      },
+      "dependsOn": ["generate-types"]
     },
     "serve": {
       "continuous": true,
@@ -38,6 +39,18 @@
     "test": {
       "options": {
         "passWithNoTests": true
+      }
+    },
+    "generate-types": {
+      "command": "prisma generate",
+      "options": {
+        "cwd": "apps/trigger-auth"
+      }
+    },
+    "migrate-prisma": {
+      "command": "prisma migrate dev",
+      "options": {
+        "cwd": "apps/trigger-auth"
       }
     }
   }
