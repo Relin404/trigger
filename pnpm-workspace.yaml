@@ -1,9 +1,0 @@
-packages:
-  - "apps/**"
-  - "libs/**"
-
-onlyBuiltDependencies:
-  - "@apollo/protobufjs"
-  - "@nestjs/core"
-  - "@prisma/engines"
-  - prisma
