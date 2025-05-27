@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'apps/trigger-auth/src/app/prisma/prisma.service';
 import { Prisma } from '@prisma-clients/trigger-auth';
 import { hash } from 'bcryptjs';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class UsersService {
