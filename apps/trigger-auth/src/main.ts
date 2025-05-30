@@ -25,7 +25,7 @@ async function bootstrap() {
     })
   );
 
-  const port = app.get(ConfigService).getOrThrow('AUTH_PORT');
+  const port = app.get(ConfigService).getOrThrow('PORT');
 
   await app.listen(port);
 
