@@ -29,7 +29,7 @@ export class AuthService {
 
     response.cookie('Authentication', accessToken, {
       httpOnly: true, // Prevents client-side JS from accessing the cookie & prevents XSS
-      secure: this.configService.get('NODE_ENV') === 'production', // Forces cookie to be sent only over HTTPS & prevents Man-in-the-Middle
+      secure: this.configService.getOrThrow('NODE_ENV') === 'production', // Forces cookie to be sent only over HTTPS & prevents Man-in-the-Middle
       expires: expires,
     });
 
