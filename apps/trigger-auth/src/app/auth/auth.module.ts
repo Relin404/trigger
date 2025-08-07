@@ -14,7 +14,7 @@ import { UsersModule } from '../users/users.module';
         return {
           secret: configService.getOrThrow<string>('JWT_SECRET'),
           signOptions: {
-            expiresIn: configService.getOrThrow<number>('JWT_EXPIRATION_MS'),
+            expiresIn: configService.getOrThrow<number>('JWT_EXPIRATION'),
           },
         };
       },
