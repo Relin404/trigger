@@ -21,4 +21,10 @@ export class UsersService {
     // Logic to retrieve users
     return this.prismaService.user.findMany();
   }
+
+  async getUser(query: Prisma.UserWhereUniqueInput) {
+    return this.prismaService.user.findUniqueOrThrow({
+      where: query,
+    });
+  }
 }
