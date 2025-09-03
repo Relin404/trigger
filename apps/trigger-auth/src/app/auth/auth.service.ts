@@ -1,11 +1,11 @@
 import { Response } from 'express';
-import { LoginInput } from './dtos/login.input';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
 import { compare } from 'bcryptjs';
 import { ConfigService } from '@nestjs/config';
-import { TokenPayload } from './dtos/token-payload.interface';
 import { JwtService } from '@nestjs/jwt';
+import { UsersService } from '../users/users.service';
+import { LoginInput } from './dtos/login.input';
+import { TokenPayload } from './dtos/token-payload.interface';
 
 @Injectable()
 export class AuthService {
@@ -45,7 +45,7 @@ export class AuthService {
         throw new UnauthorizedException('Invalid credentials');
 
       return user;
-    } catch (error) {
+    } catch {
       throw new UnauthorizedException('Invalid credentials');
     }
   }

@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AuthResolver } from './auth.resolver';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { AuthService } from './auth.service';
 import { UsersModule } from '../users/users.module';
+import { AuthResolver } from './auth.resolver';
+import { AuthService } from './auth.service';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { UsersModule } from '../users/users.module';
         return {
           secret: configService.getOrThrow<string>('JWT_SECRET'),
           signOptions: {
-            expiresIn: configService.getOrThrow<number>('JWT_EXPIRATION'),
+            expiresIn: parseInt(configService.getOrThrow('JWT_EXPIRATION'), 10),
           },
         };
       },
@@ -22,6 +23,6 @@ import { UsersModule } from '../users/users.module';
     }),
     UsersModule,
   ],
-  providers: [AuthResolver, AuthService],
+  providers: [AuthResolver, AuthService, JwtStrategy],
 })
 export class AuthModule {}

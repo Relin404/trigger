@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@trigger/nestjs": ["libs/nestjs/src/index.ts"]
+      "@trigger/nestjs": ["libs/nestjs/src/index.ts"],
+      "@trigger/trigger-auth/*": ["apps/trigger-auth/src/app/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
