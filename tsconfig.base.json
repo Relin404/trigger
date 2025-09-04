@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@trigger/nestjs": ["libs/nestjs/src/index.ts"],
-      "@trigger/trigger-auth/*": ["apps/trigger-auth/src/app/*"]
+      "@trigger/trigger-auth/*": ["apps/trigger-auth/src/app/*"],
+      "@trigger/trigger-jobs/*": ["apps/trigger-jobs/src/app/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
