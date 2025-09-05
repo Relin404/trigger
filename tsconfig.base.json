@@ -16,8 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@trigger/nestjs": ["libs/nestjs/src/index.ts"],
+      "@trigger/proto/*": ["proto/*"],
       "@trigger/trigger-auth/*": ["apps/trigger-auth/src/app/*"],
-      "@trigger/trigger-jobs/*": ["apps/trigger-jobs/src/app/*"]
+      "@trigger/trigger-jobs/*": ["apps/trigger-jobs/src/app/*"],
+      "@trigger/types/*": ["types/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
