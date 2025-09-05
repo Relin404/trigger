@@ -9,8 +9,8 @@ import { ConfigService } from '@nestjs/config';
 import * as cookieParser from 'cookie-parser';
 import { GrpcOptions, Transport } from '@nestjs/microservices';
 import { join } from 'path';
-import { AppModule } from './app/app.module';
 import { AUTH_PACKAGE_NAME } from '@trigger/types/proto/auth';
+import { AppModule } from './app/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
