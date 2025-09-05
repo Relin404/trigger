@@ -1,9 +1,16 @@
 packages:
-  - "apps/**"
-  - "libs/**"
+  - apps/**
+  - libs/**
+
+ignoredBuiltDependencies:
+  - protobufjs
 
 onlyBuiltDependencies:
-  - "@apollo/protobufjs"
-  - "@nestjs/core"
-  - "@prisma/engines"
+  - '@apollo/protobufjs'
+  - '@nestjs/core'
+  - '@parcel/watcher'
+  - '@prisma/client'
+  - '@prisma/engines'
+  - '@swc/core'
+  - nx
   - prisma
