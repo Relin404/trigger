@@ -8,7 +8,6 @@ export class UsersService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async createUser(data: Prisma.UserCreateInput) {
-    // Logic to create a user
     return this.prismaService.user.create({
       data: {
         ...data,
@@ -18,7 +17,6 @@ export class UsersService {
   }
 
   async getUsers() {
-    // Logic to retrieve users
     return this.prismaService.user.findMany();
   }
 
