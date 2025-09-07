@@ -1,7 +1,7 @@
-import { deserialize } from './pulsar.consumer';
 import { PulsarClient } from './pulsar.client';
 import { Consumer, Message } from 'pulsar-client';
 import { Logger } from '@nestjs/common';
+import { deserialize } from './pulsar.consumer';
 
 export abstract class PulsarConsumer<T> {
   private consumer!: Consumer;
