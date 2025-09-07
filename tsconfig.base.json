@@ -19,6 +19,7 @@
       "@trigger/proto/*": ["proto/*"],
       "@trigger/pulsar": ["libs/pulsar/src/index.ts"],
       "@trigger/trigger-auth/*": ["apps/trigger-auth/src/app/*"],
+      "@trigger/trigger-executor/*": ["apps/trigger-executor/src/app/*"],
       "@trigger/trigger-jobs/*": ["apps/trigger-jobs/src/app/*"],
       "@trigger/types/*": ["types/*"]
     }
