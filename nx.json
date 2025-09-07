@@ -37,7 +37,11 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/trigger-auth-e2e/**/*", "apps/trigger-jobs-e2e/**/*"]
+      "exclude": [
+        "apps/trigger-auth-e2e/**/*",
+        "apps/trigger-jobs-e2e/**/*",
+        "apps/trigger-executor-e2e/**/*"
+      ]
     }
   ],
   "targetDefaults": {

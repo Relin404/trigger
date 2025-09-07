@@ -12,6 +12,13 @@ services:
     networks:
       - postgres_network
 
+  pulsar:
+    image: apachepulsar/pulsar
+    command: >
+      /pulsar/bin/pulsar standalone
+    ports:
+      - 6650:6650
+
 volumes:
   postgres_data:
 

@@ -14,3 +14,4 @@ onlyBuiltDependencies:
   - '@swc/core'
   - nx
   - prisma
+  - pulsar-client
