@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { AbstractModel } from '@trigger/nestjs';
+import { AbstractModel } from '@trigger/graphql';
 
 @ObjectType({
   isAbstract: true,

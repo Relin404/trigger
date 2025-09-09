@@ -1,7 +1,7 @@
 {
-  "name": "trigger-auth",
+  "name": "auth",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/trigger-auth/src",
+  "sourceRoot": "apps/auth/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -24,15 +24,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "trigger-auth:build",
+        "buildTarget": "auth:build",
         "runBuildTargetDependencies": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "trigger-auth:build:development"
+          "buildTarget": "auth:build:development"
         },
         "production": {
-          "buildTarget": "trigger-auth:build:production"
+          "buildTarget": "auth:build:production"
         }
       }
     },
