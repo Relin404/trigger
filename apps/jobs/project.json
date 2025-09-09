@@ -1,7 +1,7 @@
 {
-  "name": "trigger-jobs",
+  "name": "jobs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/trigger-jobs/src",
+  "sourceRoot": "apps/jobs/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -23,15 +23,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "trigger-jobs:build",
+        "buildTarget": "jobs:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "trigger-jobs:build:development"
+          "buildTarget": "jobs:build:development"
         },
         "production": {
-          "buildTarget": "trigger-jobs:build:production"
+          "buildTarget": "jobs:build:production"
         }
       }
     },
