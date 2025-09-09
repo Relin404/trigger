@@ -3,7 +3,7 @@ const { join } = require('path');
 
 module.exports = {
   output: {
-    path: join(__dirname, '../../dist/apps/trigger-executor'),
+    path: join(__dirname, '../../dist/apps/executor'),
   },
   plugins: [
     new NxAppWebpackPlugin({

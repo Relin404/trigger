@@ -1,10 +1,10 @@
 export default {
-  displayName: 'trigger-executor',
+  displayName: 'executor',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]s$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageDirectory: '../../coverage/apps/trigger-executor',
+  coverageDirectory: '../../coverage/apps/executor',
 };

@@ -1,7 +1,7 @@
 {
-  "name": "trigger-executor",
+  "name": "executor",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/trigger-executor/src",
+  "sourceRoot": "apps/executor/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -23,15 +23,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "trigger-executor:build",
+        "buildTarget": "executor:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "trigger-executor:build:development"
+          "buildTarget": "executor:build:development"
         },
         "production": {
-          "buildTarget": "trigger-executor:build:production"
+          "buildTarget": "executor:build:production"
         }
       }
     },
