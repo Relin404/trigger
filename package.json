@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run-many -t serve -p trigger-auth trigger-jobs trigger-executor",
+    "start": "nx run-many -t serve -p auth jobs executor",
     "lint": "nx run-many -t lint",
     "test": "nx run-many -t test",
     "prepare": "husky",
@@ -20,6 +20,10 @@
     }
   },
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
   "dependencies": {
     "@apollo/server": "^4.12.1",
     "@golevelup/nestjs-discovery": "^5.0.0",
