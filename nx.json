@@ -40,22 +40,5 @@
       "exclude": []
     }
   ],
-  "targetDefaults": {
-    "build": {
-      "inputs": [
-        "{projectRoot}/**/*",
-        "{workspaceRoot}/lib/**/*",
-        "{workspaceRoot}/proto/*"
-      ],
-      "options": {
-        "assets": [
-          {
-            "glob": "*.proto",
-            "input": "proto",
-            "output": "proto"
-          }
-        ]
-      }
-    }
-  }
+  "nxCloudId": "68c4268794e3943b4938495d"
 }
