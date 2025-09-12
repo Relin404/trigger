@@ -95,7 +95,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx,jsx,mjs,cjs}": [
-      "pnpm run lint --fix"
+      "npm run lint --fix"
     ]
   }
 }
