@@ -15,13 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@trigger/auth/*": ["apps/auth/src/app/*"],
-      "@trigger/executor/*": ["apps/executor/src/app/*"],
-      "@trigger/graphql": ["libs/nestjs/src/index.ts"],
-      "@trigger/jobs/*": ["apps/jobs/src/app/*"],
+      "@trigger/graphql": ["libs/graphql/src/index.ts"],
+      "@trigger/grpc": ["libs/grpc/src/index.ts"],
+      "@trigger/nestjs": ["libs/nestjs/src/index.ts"],
+      "@trigger/prisma": ["libs/prisma/src/index.ts"],
       "@trigger/proto/*": ["proto/*"],
-      "@trigger/pulsar": ["libs/pulsar/src/index.ts"],
-      "@trigger/types/*": ["types/*"]
+      "@trigger/pulsar": ["libs/pulsar/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
