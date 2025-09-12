@@ -1,15 +1,11 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
+require('module-alias/register');
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
 import * as cookieParser from 'cookie-parser';
 import { GrpcOptions, Transport } from '@nestjs/microservices';
 import { join } from 'path';
-import { AUTH_PACKAGE_NAME } from '@trigger/types/proto/auth';
+import { AUTH_PACKAGE_NAME } from '@trigger/grpc';
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
@@ -33,12 +29,15 @@ async function bootstrap() {
 
   const port = app.get(ConfigService).getOrThrow('PORT');
   console.log('AUTH_PACKAGE_NAME =', AUTH_PACKAGE_NAME);
-  console.log('Proto path =', join(__dirname, '../../../proto/auth.proto'));
+  console.log(
+    'Proto path =',
+    join(__dirname, '../../libs/grpc/proto/auth.proto')
+  );
   app.connectMicroservice<GrpcOptions>({
     transport: Transport.GRPC,
     options: {
       package: AUTH_PACKAGE_NAME,
-      protoPath: join(__dirname, '../../../proto/auth.proto'),
+      protoPath: join(__dirname, '../../libs/grpc/proto/auth.proto'),
     },
   });
 
