@@ -24,6 +24,13 @@
     "apps/*",
     "libs/*"
   ],
+  "_moduleAliases": {
+    "@trigger/grpc": "dist/libs/grpc/main",
+    "@trigger/graphql": "dist/libs/graphql/main",
+    "@trigger/pulsar": "dist/libs/pulsar/main",
+    "@trigger/nestjs": "dist/libs/nestjs/main",
+    "@trigger/prisma": "dist/libs/prisma/main"
+  },
   "dependencies": {
     "@apollo/server": "^4.12.1",
     "@golevelup/nestjs-discovery": "^5.0.0",
