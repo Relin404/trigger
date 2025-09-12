@@ -7,7 +7,7 @@ import {
   AuthServiceController,
   AuthServiceControllerMethods,
   User,
-} from '@trigger/types/proto/auth';
+} from '@trigger/grpc';
 import { Observable } from 'rxjs';
 
 @Controller()

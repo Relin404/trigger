@@ -1,8 +1,8 @@
 import { Args, Context, Mutation, Resolver } from '@nestjs/graphql';
 import { GqlContext } from '@trigger/graphql';
-import { AuthService } from './auth.service';
-import { LoginInput } from './dtos/login.input';
-import { User } from '../users/models/user.model';
+import { AuthService } from 'apps/auth/src/app/auth/auth.service';
+import { LoginInput } from 'apps/auth/src/app/auth/dtos/login.input';
+import { User } from 'apps/auth/src/app/users/models/user.model';
 
 @Resolver()
 export class AuthResolver {
