@@ -12,7 +12,7 @@ module.exports = {
       tsConfig: './tsconfig.lib.json',
       optimization: false,
       outputHashing: 'none',
-      generatePackageJson: true,
+      generatePackageJson: false,
     }),
   ],
 };
