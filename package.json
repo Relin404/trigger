@@ -3,11 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run-many -t serve -p auth jobs executor",
-    "lint": "nx run-many -t lint",
-    "test": "nx run-many -t test",
-    "prepare": "husky",
-    "generate-ts-proto": "npx protoc --ts_proto_out=./types --ts_proto_opt=nestJs=true ./proto/*.proto"
+    "start": "nx run-many -t serve -p auth jobs executor"
   },
   "private": true,
   "workspaces": [
