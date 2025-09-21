@@ -11,11 +11,11 @@
     "libs/*"
   ],
   "_moduleAliases": {
-    "@trigger/grpc": "dist/libs/grpc/main",
-    "@trigger/graphql": "dist/libs/graphql/main",
-    "@trigger/pulsar": "dist/libs/pulsar/main",
-    "@trigger/nestjs": "dist/libs/nestjs/main",
-    "@trigger/prisma": "dist/libs/prisma/main"
+    "@trigger/grpc": "dist/libs/grpc/main.js",
+    "@trigger/graphql": "dist/libs/graphql/main.js",
+    "@trigger/pulsar": "dist/libs/pulsar/main.js",
+    "@trigger/nestjs": "dist/libs/nestjs/main.js",
+    "@trigger/prisma": "dist/libs/prisma/main.js"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.6",
