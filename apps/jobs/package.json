@@ -1,0 +1,10 @@
+{
+  "name": "@trigger/jobs",
+  "version": "0.0.1",
+  "dependencies": {
+    "@golevelup/nestjs-discovery": "^5.0.0",
+    "graphql-type-json": "^0.3.2",
+    "ts-proto": "^2.7.7"
+  },
+  "devDependencies": {}
+}

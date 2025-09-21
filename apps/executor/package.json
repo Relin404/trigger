@@ -1,0 +1,8 @@
+{
+  "name": "@trigger/executor",
+  "version": "0.0.1",
+  "dependencies": {
+    "fibonacci": "^1.6.12"
+  },
+  "devDependencies": {}
+}
