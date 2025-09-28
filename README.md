@@ -40,8 +40,15 @@ Trigger is a modern microservices platform designed for handling distributed job
 2. **Set up environment variables:**
 
    ```bash
+   # Root environment configuration
    cp .env.example .env
    # Edit .env with your configuration
+
+   # Application-specific environment files
+   cp apps/auth/.env.example apps/auth/.env
+   cp apps/jobs/.env.example apps/jobs/.env
+   cp apps/executor/.env.example apps/executor/.env
+   # Edit each app's .env file with service-specific configuration
    ```
 
 3. **Generate Prisma client:**
