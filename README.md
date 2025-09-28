@@ -1,81 +1,277 @@
 # Trigger
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+A distributed microservices platform built with NestJS, Nx monorepo, and event-driven architecture for scalable job processing and user authentication.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+## 🏗️ Architecture Overview
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/nest?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+Trigger is a modern microservices platform designed for handling distributed job processing with the following key components:
 
-## Finish your CI setup
+### 🔧 Core Services
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/9Sum5SoKKq)
+- **🔐 Auth Service** (`apps/auth`) - Authentication and user management with gRPC API
+- **📋 Jobs Service** (`apps/jobs`) - Job management and scheduling with GraphQL API
+- **⚡ Executor Service** (`apps/executor`) - Job execution engine with Pulsar messaging
 
-## Run tasks
+### 📚 Shared Libraries
 
-To run the dev server for your app, use:
+- **🌐 GraphQL** (`libs/graphql`) - Shared GraphQL schemas and utilities
+- **🔗 gRPC** (`libs/grpc`) - Protocol buffer definitions and gRPC clients
+- **🎯 NestJS** (`libs/nestjs`) - Common NestJS utilities and decorators
+- **💾 Prisma** (`libs/prisma`) - Database client and schema management
+- **📡 Pulsar** (`libs/pulsar`) - Apache Pulsar messaging client and utilities
 
-```sh
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- Docker and Docker Compose
+- PostgreSQL database
+- Apache Pulsar cluster
+
+### Development Setup
+
+1. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+2. **Set up environment variables:**
+
+   ```bash
+   cp .env.example .env
+   # Edit .env with your configuration
+   ```
+
+3. **Generate Prisma client:**
+
+   ```bash
+   npx nx run auth:generate-prisma
+   ```
+
+4. **Start all services:**
+
+   ```bash
+   npm start
+   ```
+
+This will start:
+
+- Auth Service: <http://localhost:3000/api>
+- Jobs Service: <http://localhost:3001/api>
+- Executor Service: <http://localhost:3002/api>
+
+### Individual Service Commands
+
+Start specific services:
+
+```bash
+# Auth service only
 npx nx serve auth
+
+# Jobs service only
+npx nx serve jobs
+
+# Executor service only
+npx nx serve executor
 ```
 
-To create a production bundle:
+## 🏢 Service Details
 
-```sh
+### Auth Service (Port 3000)
+
+- **Purpose**: User authentication and authorization
+- **Technologies**: NestJS, Prisma, gRPC, GraphQL
+- **Features**:
+  - User registration and login
+  - JWT token management
+  - gRPC microservice for inter-service communication
+  - GraphQL API for frontend integration
+
+### Jobs Service (Port 3001)
+
+- **Purpose**: Job management and scheduling
+- **Technologies**: NestJS, Apache Pulsar, GraphQL
+- **Features**:
+  - Job creation and scheduling
+  - Job status tracking
+  - Event-driven job processing
+  - GraphQL API with job providers discovery
+
+### Executor Service (Port 3002)
+
+- **Purpose**: Job execution engine
+- **Technologies**: NestJS, Apache Pulsar
+- **Features**:
+  - Consumes jobs from Pulsar queues
+  - Executes job workloads
+  - Reports job completion status
+  - Scalable worker architecture
+
+## 🐳 Docker Deployment
+
+The project includes Docker configurations for containerized deployment:
+
+```bash
+# Build all services
+docker-compose build
+
+# Start the entire stack
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+```
+
+## 🛠️ Development
+
+### Project Structure
+
+```
+apps/
+├── auth/          # Authentication service
+├── executor/      # Job execution service
+└── jobs/          # Job management service
+
+libs/
+├── graphql/       # Shared GraphQL utilities
+├── grpc/          # gRPC protocol definitions
+├── nestjs/        # Common NestJS utilities
+├── prisma/        # Database client
+└── pulsar/        # Messaging client
+```
+
+### Building
+
+```bash
+# Build all projects
+npx nx run-many -t build
+
+# Build specific project
 npx nx build auth
 ```
 
-To see all available targets to run for a project, run:
+### Testing
 
-```sh
-npx nx show project auth
+```bash
+# Run all tests
+npx nx run-many -t test
+
+# Test specific project
+npx nx test auth
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+### Code Generation
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+```bash
+# Generate new NestJS app
+npx nx g @nx/nest:app my-service
 
-## Add new projects
+# Generate new library
+npx nx g @nx/node:lib my-lib
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
-```sh
-npx nx g @nx/nest:app demo
+# Generate Prisma migrations
+npx nx run auth:prisma-migrate-dev
 ```
 
-To generate a new library, use:
+## 🔧 Configuration
 
-```sh
-npx nx g @nx/node:lib mylib
+### Environment Variables
+
+Key environment variables to configure:
+
+```bash
+# Database
+DATABASE_URL="postgresql://user:password@localhost:5432/trigger"
+
+# Pulsar
+PULSAR_SERVICE_URL="pulsar://localhost:6650"
+
+# JWT
+JWT_SECRET="your-secret-key"
+
+# gRPC
+GRPC_PORT=50051
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+### Module Resolution
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+The project uses a custom module resolver (`module-resolver.js`) to handle internal library dependencies in the monorepo. This ensures proper module resolution in both development and production environments.
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## 🏗️ Technology Stack
 
-## Install Nx Console
+- **Framework**: NestJS
+- **Monorepo**: Nx
+- **Database**: PostgreSQL with Prisma ORM
+- **Messaging**: Apache Pulsar
+- **API**: GraphQL + gRPC
+- **Authentication**: JWT
+- **Containerization**: Docker
+- **Language**: TypeScript
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+## 📝 API Documentation
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### GraphQL APIs
 
-## Useful links
+- **Jobs Service**: <http://localhost:3001/graphql>
+- **Auth Service**: <http://localhost:3000/graphql>
 
-Learn more:
+### gRPC Services
 
-- [Learn more about this workspace setup](https://nx.dev/nx-api/nest?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- **Auth Service**: localhost:50051
 
-And join the Nx community:
+## 📊 Project Management with Linear
 
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+I use [Linear](https://linear.app) for issue tracking and project management throughout this project. Linear's streamlined workflow has been instrumental in maintaining my development velocity by providing:
+
+- **Automated branch naming** - Each issue automatically generates branch names (e.g., `side-22-dockerize-all-microservices`)
+- **Seamless PR linking** - Pull requests are automatically linked to Linear issues for complete traceability
+- **Milestone tracking** - Clear progress visualization across development phases
+- **Efficient workflow** - Streamlined task management and status updates
+
+The branch naming convention you see across this repository directly reflects Linear's issue tracking system, ensuring every code change I make is tied to a specific feature or bug fix.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📋 Roadmap & Todo
+
+### 🛍️ Products Module
+
+- [ ] Add a products module with full CRUD operations
+- [ ] Integrate Drizzle ORM for database operations in the products module
+- [ ] Implement gRPC communication protocol for the products service
+<!-- - [ ] Create product catalog and inventory management features -->
+
+### ☸️ Kubernetes Integration
+
+- [ ] Prepare Kubernetes manifests
+<!-- - [ ] Set up Kubernetes cluster configuration
+- [ ] Integrate with GitHub Actions for CI/CD pipeline
+- [ ] Configure Amazon ECR (Elastic Container Registry) for Docker images
+- [ ] Create comprehensive Helm charts for all services
+- [ ] Implement horizontal pod autoscaling (HPA) for dynamic scaling
+- [ ] Set up resource limits and requests for optimal performance -->
+
+### 🚀 Production Deployment
+
+- [ ] Deploy to AWS Elastic Kubernetes Service (EKS)
+- [ ] Configure AWS-specific Helm charts and values
+<!-- - [ ] Set up custom domain with Route 53 DNS management
+- [ ] Implement SSL/TLS certificates with AWS Certificate Manager
+- [ ] Configure production-grade monitoring and logging
+- [ ] Set up automated backup and disaster recovery -->
+
+---
+
+Built with ❤️ using [Nx](https://nx.dev) and [NestJS](https://nestjs.com)
